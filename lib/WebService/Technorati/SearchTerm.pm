@@ -9,8 +9,9 @@ use fields qw(inboundblogs query querycount querytime rankingstart);
 
 
 BEGIN {
-	use vars qw ($VERSION);
-	$VERSION     = 0.02;
+    use vars qw ($VERSION $DEBUG);
+    $VERSION     = 0.03;
+    $DEBUG       = 0;
 }
 
 =head2 getInboundblogs
@@ -153,21 +154,26 @@ use WebService::Technorati::Blog;
         querytime => undef,
         rankingstart => undef
     );
-    sub _accessible { exists $_attrs{$_[1]} }
+    sub _accessible {
+        if ($DEBUG) {
+            print __PACKAGE__ . ": checking for attr [$_[1]]\n";
+        }
+        return exists($_attrs{$_[1]});
+    }
 }
 
 sub new_from_node {
-	my $class = shift;
-	my $node = shift;
-	my $data = {
-		inboundblogs => $node->findvalue('inboundblogs')->string_value(),
+    my $class = shift;
+    my $node = shift;
+    my $data = {
+        inboundblogs => $node->findvalue('inboundblogs')->string_value(),
         query => $node->findvalue('query')->string_value(),
         querycount => $node->findvalue('querycount')->string_value(),
         querytime => $node->findvalue('querytime')->string_value(),
         rankingstart => $node->findvalue('rankingstart')->string_value(),
-	};
-	my $self = bless ($data, ref ($class) || $class);
-	return $self;
+    };
+    my $self = bless ($data, ref ($class) || $class);
+    return $self;
 }
 
 1;

@@ -9,8 +9,9 @@ use base 'WebService::Technorati::BaseTechnoratiObject';
 
 
 BEGIN {
-	use vars qw ($VERSION);
-	$VERSION     = 0.02;
+    use vars qw ($VERSION $DEBUG);
+    $VERSION     = 0.03;
+    $DEBUG       = 0;
 }
 
 =head2 getFirstname
@@ -119,20 +120,25 @@ See Also   : WebService::Technorati
         username => undef,
         thumbnailpicture => undef
     );
-    sub _accessible { exists $_attrs{$_[1]} }
+    sub _accessible {
+        if ($DEBUG) {
+            print __PACKAGE__ . ": checking for attr [$_[1]]\n";
+        }
+        return exists($_attrs{$_[1]});
+    }
 }
 
 sub new_from_node {
-	my $class = shift;
-	my $node = shift;
-	my $data = {
-		firstname => $node->findvalue('firstname')->string_value(),
+    my $class = shift;
+    my $node = shift;
+    my $data = {
+        firstname => $node->findvalue('firstname')->string_value(),
         lastname => $node->findvalue('lastname')->string_value(),
         username => $node->findvalue('username')->string_value(),
         thumbnailpicture => $node->findvalue('thumbnailpicture')->string_value()
-	};
-	my $self = bless ($data, ref ($class) || $class);
-	return $self;
+    };
+    my $self = bless ($data, ref ($class) || $class);
+    return $self;
 }
 
 1;

@@ -10,11 +10,11 @@ use WebService::Technorati::AuthorinfoApiQuery;
 use WebService::Technorati::BloginfoApiQuery;
 
 BEGIN {
-	use vars qw ($VERSION);
-	$VERSION     = 0.02;
+    use vars qw ($VERSION);
+    $VERSION     = 0.03;
 }
 
-# $Id: Technorati.pm,v 1.1.1.1 2004/11/19 00:03:23 ikallen Exp $ 
+# $Id: Technorati.pm,v 1.2 2004/12/02 00:25:26 ikallen Exp $ 
 
 ########################################### main pod documentation begin ##
 
@@ -61,9 +61,9 @@ http://mail.technorati.com/mailman/listinfo/developers
 
 =head1 AUTHOR
 
-	Ian Kallen
-	ikallen _at_ technorati.com
-	http://developers.technorati.com
+    Ian Kallen
+    ikallen _at_ technorati.com
+    http://developers.technorati.com
 
 =head1 COPYRIGHT
 
@@ -102,10 +102,10 @@ See Also   : WebService::Technorati::CosmosApiQuery
 =cut
 
 sub getCosmosApiQuery {
-	my $self = shift;
-	my $url = shift;
-	my $q = WebService::Technorati::CosmosApiQuery->new(key => $self->{'key'}, url => $url);
-	return $q;
+    my $self = shift;
+    my $url = shift;
+    my $q = WebService::Technorati::CosmosApiQuery->new(key => $self->{'key'}, url => $url);
+    return $q;
 }
 
 =head2 getSearchApiQuery
@@ -124,10 +124,10 @@ See Also   : WebService::Technorati::SearchApiQuery
 =cut
 
 sub getSearchApiQuery {
-	my $self = shift;
-	my $keyword = shift;
-	my $q = WebService::Technorati::SearchApiQuery->new(key => $self->{'key'}, url => $keyword);
-	return $q;
+    my $self = shift;
+    my $keyword = shift;
+    my $q = WebService::Technorati::SearchApiQuery->new(key => $self->{'key'}, url => $keyword);
+    return $q;
 }
 
 
@@ -147,10 +147,10 @@ See Also   : WebService::Technorati::OutboundApiQuery
 =cut
 
 sub getOutboundApiQuery {
-	my $self = shift;
-	my $url = shift;
-	my $q = WebService::Technorati::OutboundApiQuery->new(key => $self->{'key'}, url => $url);
-	return $q;
+    my $self = shift;
+    my $url = shift;
+    my $q = WebService::Technorati::OutboundApiQuery->new(key => $self->{'key'}, url => $url);
+    return $q;
 }
 
 
@@ -170,10 +170,10 @@ See Also   : WebService::Technorati::AuthorinfoApiQuery
 =cut
 
 sub getAuthorinfoApiQuery {
-	my $self = shift;
-	my $url = shift;
-	my $q = WebService::Technorati::AuthorinfoApiQuery->new(key => $self->{'key'}, url => $url);
-	return $q;
+    my $self = shift;
+    my $url = shift;
+    my $q = WebService::Technorati::AuthorinfoApiQuery->new(key => $self->{'key'}, url => $url);
+    return $q;
 }
 
 
@@ -193,10 +193,10 @@ See Also   : WebService::Technorati::BloginfoApiQuery
 =cut
 
 sub getBloginfoApiQuery {
-	my $self = shift;
-	my $url = shift;
-	my $q = WebService::Technorati::BloginfoApiQuery->new(key => $self->{'key'}, url => $url);
-	return $q;
+    my $self = shift;
+    my $url = shift;
+    my $q = WebService::Technorati::BloginfoApiQuery->new(key => $self->{'key'}, url => $url);
+    return $q;
 }
 
 
@@ -205,14 +205,14 @@ sub getBloginfoApiQuery {
 
 
 sub new {
-	my ($class, %params) = @_;
-	if (! exists $params{'key'}) {
-		WebService::Technorati::InstantiationException->throw(
-		    "WebService::Technorati must be instantiated with at " .
-		    "least 'key => theverylongkeystring'"); 
-	}
-	my $self = bless (\%params, ref ($class) || $class);
-	return $self;
+    my ($class, %params) = @_;
+    if (! exists $params{'key'}) {
+        WebService::Technorati::InstantiationException->throw(
+            "WebService::Technorati must be instantiated with at " .
+            "least 'key => theverylongkeystring'"); 
+    }
+    my $self = bless (\%params, ref ($class) || $class);
+    return $self;
 }
 
 

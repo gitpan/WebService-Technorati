@@ -4,6 +4,7 @@
 
 use Test::More tests => 3;
 use XML::XPath;
+use XML::Parser;
 use WebService::Technorati;
 use FindBin qw($Bin);
 
@@ -12,7 +13,10 @@ my $username = 'spidaman';
 my $t = WebService::Technorati->new(key => $apiKey);
 my $cq = $t->getAuthorinfoApiQuery($username);
 
-my $result_xp = XML::XPath->new(filename => "$Bin/testdata/getinfo.xml");
+my $parser = new XML::Parser(NoLWP => 1);
+my $result_xp = XML::XPath->new(
+    parser => $parser,
+    filename => "$Bin/testdata/getinfo.xml");
 $cq->readResults($result_xp);
 
 my $author = $cq->getSubjectAuthor();

@@ -4,6 +4,7 @@
 
 use Test::More tests => 3;
 use XML::XPath;
+use XML::Parser;
 use WebService::Technorati;
 use FindBin qw($Bin);
 
@@ -12,11 +13,14 @@ my $url = 'http://www.arachna.com/roller/page/spidaman';
 my $t = WebService::Technorati->new(key => $apiKey);
 my $q = $t->getOutboundApiQuery($url);
 
-my $result_xp = XML::XPath->new(filename => "$Bin/testdata/outbound.xml");
+my $parser = new XML::Parser(NoLWP => 1);
+my $result_xp = XML::XPath->new(
+    parser => $parser,
+    filename => "$Bin/testdata/outbound.xml");
 $q->readResults($result_xp);
 
-my $blog = $q->getSubjectBlog();
-isa_ok($blog, 'WebService::Technorati::BlogSubject');
+my $subject = $q->getLinkQuerySubject();
+isa_ok($subject, 'WebService::Technorati::LinkQuerySubject');
 my @links = $q->getOutboundLinks();
 is(19, $#links);
 my $link = pop(@links);

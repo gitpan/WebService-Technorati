@@ -4,6 +4,7 @@
 
 use Test::More tests => 3;
 use XML::XPath;
+use XML::Parser;
 use WebService::Technorati;
 use FindBin qw($Bin);
 
@@ -12,7 +13,10 @@ my $keyword = '"George Bush"';
 my $t = WebService::Technorati->new(key => $apiKey);
 my $sq = $t->getSearchApiQuery($keyword);
 
-my $result_xp = XML::XPath->new(filename => "$Bin/testdata/search.xml");
+my $parser = new XML::Parser(NoLWP => 1);
+my $result_xp = XML::XPath->new(
+    parser => $parser,
+    filename => "$Bin/testdata/search.xml");
 $sq->readResults($result_xp);
 
 my $search_term = $sq->getSubjectSearchTerm();

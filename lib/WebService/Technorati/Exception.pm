@@ -4,8 +4,8 @@ use utf8;
 
 
 BEGIN {
-	use vars qw ($VERSION);
-	$VERSION     = 0.02;
+    use vars qw ($VERSION);
+    $VERSION     = 0.03;
 }
 
 =head1 WebService::Technorati::NetworkException

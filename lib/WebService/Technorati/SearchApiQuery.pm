@@ -11,20 +11,21 @@ use base 'WebService::Technorati::ApiQuery';
 use constant API_URI => '/cosmos';
 
 BEGIN {
-	use vars qw ($VERSION);
-	$VERSION     = 0.02;
+    use vars qw ($VERSION $DEBUG);
+    $VERSION     = 0.03;
+    $DEBUG       = 0;
 }
 
 sub new {
     my ($class, %params) = @_;
     if (! exists $params{'key'}) {
-    	WebService::Technorati::InstantiationException->throw(
-    	  "WebService::Technorati::SearchApiQuery must be " .
-    	  "instantiated with at least 'key => theverylongkeystring'"); 
+        WebService::Technorati::InstantiationException->throw(
+            "WebService::Technorati::SearchApiQuery must be " .
+            "instantiated with at least 'key => theverylongkeystring'"); 
     }
     my $data = {};
     if (! exists $params{'url'}) {
-    	$data->{'needs_url'}++;
+        $data->{'needs_url'}++;
     }
     for my $k (keys %params) {
          $data->{'args'}{$k} = $params{$k};
@@ -47,9 +48,9 @@ sub execute {
     my $self = shift;
     my $apiUrl = $self->apiHostUrl() . API_URI;
     if (exists $self->{'needs_url'}) {
-        	WebService::Technorati::StateValidationException->throw(
-        	"WebService::Technorati::AuthorinfoApiQuery must have a " .
-        	"'url' attribute set prior to query execution");
+        WebService::Technorati::StateValidationException->throw(
+            "WebService::Technorati::AuthorinfoApiQuery must have a " .
+            "'url' attribute set prior to query execution");
     }
     $self->SUPER::execute($apiUrl,$self->{'args'});
 }

@@ -3,48 +3,54 @@ use strict;
 use utf8;
 
 use WebService::Technorati::ApiQuery;
-use WebService::Technorati::BlogSubject;
+use WebService::Technorati::LinkQuerySubject;
 use WebService::Technorati::BlogLink;
 use WebService::Technorati::Exception;
 use base 'WebService::Technorati::ApiQuery';
 
+BEGIN {
+    use vars qw ($VERSION $DEBUG);
+    $VERSION     = 0.03;
+    $DEBUG       = 0;
+}
+
 use constant API_URI => '/cosmos';
 
 sub new {
-	my ($class, %params) = @_;
-	if (! exists $params{'key'}) {
-		WebService::Technorati::InstantiationException->throw(
-		  "WebService::Technorati::OutboundApiQuery must be " .
-		  "instantiated with at least 'key => theverylongkeystring'"); 
-	}
-	my $data = {};
-	if (! exists $params{'url'}) {
-		$data->{'needs_url'}++;
-	}
-	for my $k (keys %params) {
-	     $data->{'args'}{$k} = $params{$k};
-	}
-	my $self = bless ($data, ref ($class) || $class);
-	return $self;
+    my ($class, %params) = @_;
+    if (! exists $params{'key'}) {
+        WebService::Technorati::InstantiationException->throw(
+            "WebService::Technorati::OutboundApiQuery must be " .
+            "instantiated with at least 'key => theverylongkeystring'"); 
+    }
+    my $data = {};
+    if (! exists $params{'url'}) {
+        $data->{'needs_url'}++;
+    }
+    for my $k (keys %params) {
+        $data->{'args'}{$k} = $params{$k};
+    }
+    my $self = bless ($data, ref ($class) || $class);
+    return $self;
 }
 
 sub url {
-	my $self = shift;
-	my $url = shift;
-	if ($url) {
-	    $self->{'url'} = $url;
-	    delete($self->{'needs_url'});
-	}
-	return $self->{'url'};
+    my $self = shift;
+    my $url = shift;
+    if ($url) {
+        $self->{'url'} = $url;
+        delete($self->{'needs_url'});
+    }
+    return $self->{'url'};
 }
 
 sub execute {
     my $self = shift;
     my $apiUrl = $self->apiHostUrl() . API_URI;
     if (exists $self->{'needs_url'}) {
-    		WebService::Technorati::StateValidationException->throw(
-    		"WebService::Technorati::AuthorinfoApiQuery must have a " .
-    		"'url' attribute set prior to query execution");
+        WebService::Technorati::StateValidationException->throw(
+            "WebService::Technorati::AuthorinfoApiQuery must have a " .
+            "'url' attribute set prior to query execution");
     }
     $self->SUPER::execute($apiUrl,$self->{'args'}); 
 }
@@ -54,15 +60,14 @@ sub readResults {
     my $result_xp = shift;
     my $error = $result_xp->find('/tapi/document/result/error');
     if ($error) {
-    		WebService::Technorati::DataException->throw($error);
+        WebService::Technorati::DataException->throw($error);
     }
     my $nodeset = $result_xp->find("/tapi/document/result");
     my $node = $nodeset->shift;
-	my $blogSubject = WebService::Technorati::BlogSubject->new_from_node($node);
-	
+    my $blogSubject = WebService::Technorati::LinkQuerySubject->new_from_node($node);
     $nodeset = $result_xp->find('/tapi/document/item');
     my @links = ();
-	for my $node ($nodeset->get_nodelist) {
+    for my $node ($nodeset->get_nodelist) {
         my $blogLink = WebService::Technorati::BlogLink->new_from_node($node);
         push(@links, $blogLink);
     }
@@ -72,16 +77,11 @@ sub readResults {
 }
 
 
-BEGIN {
-	use vars qw ($VERSION);
-	$VERSION     = 0.02;
-}
+=head2 getLinkQuerySubject
 
-=head2 getSubjectBlog
-
- Usage     : getSubjectBlog();
+ Usage     : getLinkQuerySubject();
  Purpose   : 
- Returns   : a scalar WebService::Technorati::BlogSubject instance
+ Returns   : a scalar WebService::Technorati::LinkQuerySubject instance
  Argument  : none
  Throws    : none
  Comments  : the URL subject (blog or not) is returned with what 
@@ -90,7 +90,7 @@ See Also   : WebService::Technorati
 
 =cut
 
-sub getSubjectBlog {
+sub getLinkQuerySubject {
     my $self = shift;
     return $self->{'subject'};
 }

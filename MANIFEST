@@ -16,7 +16,7 @@ lib/WebService/Technorati/BaseTechnoratiObject.pm
 lib/WebService/Technorati/Blog.pm
 lib/WebService/Technorati/BloginfoApiQuery.pm
 lib/WebService/Technorati/BlogLink.pm
-lib/WebService/Technorati/BlogSubject.pm
+lib/WebService/Technorati/LinkQuerySubject.pm
 lib/WebService/Technorati/CosmosApiQuery.pm
 lib/WebService/Technorati/Exception.pm
 lib/WebService/Technorati/OutboundApiQuery.pm

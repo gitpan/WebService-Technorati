@@ -4,6 +4,7 @@
 
 use Test::More tests => 1;
 use XML::XPath;
+use XML::Parser;
 use WebService::Technorati;
 use FindBin qw($Bin);
 
@@ -12,7 +13,10 @@ my $url = 'http://www.arachna.com/roller/page/spidaman';
 my $t = WebService::Technorati->new(key => $apiKey);
 my $q = $t->getBloginfoApiQuery($url);
 
-my $result_xp = XML::XPath->new(filename => "$Bin/testdata/bloginfo.xml");
+my $parser = new XML::Parser(NoLWP => 1);
+my $result_xp = XML::XPath->new(
+    parser => $parser,
+    filename => "$Bin/testdata/bloginfo.xml");
 $q->readResults($result_xp);
 
 my $blog = $q->getSubjectBlog();

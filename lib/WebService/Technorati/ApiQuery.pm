@@ -12,8 +12,9 @@ use constant DEFAULT_API_HOST_URL => 'http://api.technorati.com';
 
 
 BEGIN {
-	use vars qw ($VERSION);
-	$VERSION     = 0.02;
+    use vars qw ($VERSION $DEBUG);
+    $VERSION     = 0.03;
+    $DEBUG       = 0;
 }
 
 my $api_host_url = '';
@@ -51,9 +52,9 @@ http://mail.technorati.com/mailman/listinfo/developers
 
 =head1 AUTHOR
 
-	Ian Kallen
-	ikallen _at_ technorati.com
-	http://developers.technorati.com
+    Ian Kallen
+    ikallen _at_ technorati.com
+    http://developers.technorati.com
 
 =head1 COPYRIGHT
 
@@ -184,7 +185,7 @@ See Also   : WebService::Technorati
 =cut
 
 sub readResults {
-	WebService::Technorati::MethodNotImplementedException->throw(
+    WebService::Technorati::MethodNotImplementedException->throw(
         "abstract methond 'readResults()' not implemented");
 } 
 

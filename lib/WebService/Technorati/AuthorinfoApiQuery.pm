@@ -11,45 +11,46 @@ use base 'WebService::Technorati::ApiQuery';
 use constant API_URI => '/getinfo';
 
 BEGIN {
-	use vars qw ($VERSION);
-	$VERSION     = 0.02;
+    use vars qw ($VERSION $DEBUG);
+    $VERSION     = 0.03;
+    $DEBUG       = 0;
 }
 
 sub new {
-	my ($class, %params) = @_;
-	if (! exists $params{'key'}) {
-		WebService::Technorati::InstantiationException->throw(
-		  "WebService::Technorati::AuthorinfoApiQuery must be " .
-		  "instantiated with at least 'key => theverylongkeystring'");	
-	}
-	my $data = {};
-	if (! exists $params{'username'}) {
-		$data->{'needs_username'}++;
-	}
-	for my $k (keys %params) {
-	     $data->{'args'}{$k} = $params{$k};
-	}
-	my $self = bless ($data, ref ($class) || $class);
-	return $self;
+    my ($class, %params) = @_;
+    if (! exists $params{'key'}) {
+        WebService::Technorati::InstantiationException->throw(
+            "WebService::Technorati::AuthorinfoApiQuery must be " .
+            "instantiated with at least 'key => theverylongkeystring'");
+    }
+    my $data = {};
+    if (! exists $params{'username'}) {
+        $data->{'needs_username'}++;
+    }
+    for my $k (keys %params) {
+        $data->{'args'}{$k} = $params{$k};
+    }
+    my $self = bless ($data, ref ($class) || $class);
+    return $self;
 }
 
 sub username {
-	my $self = shift;
-	my $username = shift;
-	if ($username) {
-	    $self->{'username'} = $username;
-	    delete($self->{'needs_username'});
-	}
-	return $self->{'username'};
+    my $self = shift;
+    my $username = shift;
+    if ($username) {
+        $self->{'username'} = $username;
+        delete($self->{'needs_username'});
+    }
+    return $self->{'username'};
 }
 
 sub execute {
     my $self = shift;
     my $apiUrl = $self->apiHostUrl() . API_URI;
     if (exists $self->{'needs_username'}) {
-    		WebService::Technorati::StateValidationException->throw(
-    		"WebService::Technorati::AuthorinfoApiQuery must have a " .
-    		"'username' attribute set prior to query execution");
+        WebService::Technorati::StateValidationException->throw(
+            "WebService::Technorati::AuthorinfoApiQuery must have a " .
+            "'username' attribute set prior to query execution");
     }
     $self->SUPER::execute($apiUrl,$self->{'args'}); 
 }
@@ -59,15 +60,15 @@ sub readResults {
     my $result_xp = shift;
     my $error = $result_xp->find('/tapi/document/result/error');
     if ($error) {
-    		WebService::Technorati::DataException->throw($error);
+        WebService::Technorati::DataException->throw($error);
     }
     my $nodeset = $result_xp->find("/tapi/document/result");
     my $node = $nodeset->shift;
-	my $authorSubject = WebService::Technorati::Author->new_from_node($node);
-	
+    my $authorSubject = WebService::Technorati::Author->new_from_node($node);
+    
     $nodeset = $result_xp->find('/tapi/document/item/weblog');
     my @blogs = ();
-	for my $node ($nodeset->get_nodelist) {
+    for my $node ($nodeset->get_nodelist) {
         my $blog = WebService::Technorati::Blog->new_from_node($node);
         push(@blogs, $blog);
     }

@@ -9,8 +9,9 @@ use base 'WebService::Technorati::BaseTechnoratiObject';
 
 
 BEGIN {
-	use vars qw ($VERSION);
-	$VERSION     = 0.02;
+    use vars qw ($VERSION $DEBUG);
+    $VERSION     = 0.03;
+    $DEBUG       = 0;
 }
 
 =head2 getUrl
@@ -282,7 +283,12 @@ See Also   : WebService::Technorati
         lon => undef,
         rank => undef
     );
-    sub _accessible { exists $_attrs{$_[1]} }
+    sub _accessible {
+        if ($DEBUG) {
+            print __PACKAGE__ . ": checking for attr [$_[1]]\n";
+        }
+        return exists($_attrs{$_[1]});
+    }
 }
 
 sub new_from_node {
