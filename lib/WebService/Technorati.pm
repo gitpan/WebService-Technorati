@@ -11,10 +11,10 @@ use WebService::Technorati::BloginfoApiQuery;
 
 BEGIN {
     use vars qw ($VERSION);
-    $VERSION     = 0.03;
+    $VERSION    = 0.04;
 }
 
-# $Id: Technorati.pm,v 1.2 2004/12/02 00:25:26 ikallen Exp $ 
+# $Id: Technorati.pm,v 1.4 2004/12/30 23:10:47 ikallen Exp $ 
 
 ########################################### main pod documentation begin ##
 
@@ -32,8 +32,8 @@ WebService::Technorati - a Perl interface to the Technorati web services interfa
   my $q = $t->getCosmosApiQuery($url);
   $q->execute;
   
-  my $blog = $q->getSubjectBlog();
-  # do something with the blog
+  my $linkedUrl = $q->getLinkQuerySubject();
+  # do something with the linkedUrl
   
   my $links = $q->getInboundLinks();
   for my $link (@$links) {

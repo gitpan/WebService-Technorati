@@ -21,7 +21,7 @@ if (DEBUG) {
 } else {
     $q->execute;
 }
-my $blog = $q->getSubjectBlog();
+my $blog = $q->getLinkQuerySubject();
 print "blog: $blog\n";
 print Dumper($blog);
 my @links = $q->getOutboundLinks();

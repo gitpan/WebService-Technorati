@@ -11,8 +11,8 @@ SYNOPSIS
       my $q = $t->getCosmosApiQuery($url);
       $q->execute;
   
-      my $blog = $q->getSubjectBlog();
-      # do something with the blog
+      my $linkedUrl = $q->getLinkQuerySubject();
+      # do something with the linkedUrl
   
       my $links = $q->getInboundLinks();
       for my $link (@$links) {

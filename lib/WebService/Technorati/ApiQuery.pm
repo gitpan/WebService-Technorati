@@ -13,7 +13,7 @@ use constant DEFAULT_API_HOST_URL => 'http://api.technorati.com';
 
 BEGIN {
     use vars qw ($VERSION $DEBUG);
-    $VERSION     = 0.03;
+    $VERSION    = 0.04;
     $DEBUG       = 0;
 }
 

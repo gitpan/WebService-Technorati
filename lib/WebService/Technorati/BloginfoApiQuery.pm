@@ -11,7 +11,7 @@ use constant API_URI => '/cosmos';
 
 BEGIN {
     use vars qw ($VERSION $DEBUG);
-    $VERSION     = 0.03;
+    $VERSION    = 0.04;
     $DEBUG       = 0;
 }
 

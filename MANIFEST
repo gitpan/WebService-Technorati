@@ -32,6 +32,7 @@ t/005_parsebloginfoxml.t
 t/006_parseauthorinfoxml.t
 t/testdata/bloginfo.xml
 t/testdata/cosmos.xml
+t/testdata/cosmos-nonblog.xml
 t/testdata/getinfo.xml
 t/testdata/outbound.xml
 t/testdata/search.xml
