@@ -10,6 +10,11 @@ use base 'WebService::Technorati::ApiQuery';
 
 use constant API_URI => '/cosmos';
 
+BEGIN {
+	use vars qw ($VERSION);
+	$VERSION     = 0.02;
+}
+
 sub new {
 	my ($class, %params) = @_;
 	if (! exists $params{'key'}) {
@@ -62,6 +67,20 @@ sub readResults {
 	
     $self->{'blog'} = $blog;
 }
+
+
+=head2 getSubjectBlog
+
+ Usage     : getSubjectBlog();
+ Purpose   : 
+ Returns   : a scalar WebService::Technorati::Blog instance
+ Argument  : none
+ Throws    : none
+ Comments  : the URL subject (blog or not) is returned with what 
+             Technorati knows about it
+See Also   : WebService::Technorati
+
+=cut
 
 sub getSubjectBlog {
     my $self = shift;

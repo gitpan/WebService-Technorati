@@ -9,6 +9,146 @@ use WebService::Technorati::Blog;
 use WebService::Technorati::BaseTechnoratiObject;
 use base 'WebService::Technorati::BaseTechnoratiObject';
 
+
+BEGIN {
+	use vars qw ($VERSION);
+	$VERSION     = 0.02;
+}
+
+=head2 getBlog
+
+ Usage     : getBlog();
+ Purpose   : 
+ Returns   : a scalar WebService::Technorati::Blog
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 setBlog
+
+ Usage     : setBlog(blog);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar WebService::Technorati::Blog
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 getNearestpermalink
+
+ Usage     : getNearestpermalink();
+ Purpose   : 
+ Returns   : a scalar string
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 setNearestpermalink
+
+ Usage     : setNearestpermalink(string);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar string
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+
+=head2 getExcerpt
+
+ Usage     : getExcerpt();
+ Purpose   : 
+ Returns   : a scalar string
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 setExcerpt
+
+ Usage     : setExcerpt(string);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar string
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+
+=head2 getLinkcreated
+
+ Usage     : getLinkcreated();
+ Purpose   : 
+ Returns   : a scalar string
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 setLinkcreated
+
+ Usage     : setLinkcreated(string);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar string
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 getLinkurl
+
+ Usage     : getLinkurl();
+ Purpose   : 
+ Returns   : a scalar string
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 setLinkurl
+
+ Usage     : setLinkurl(string);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar string
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+
+
 {
     my %_attrs = (
         blog => undef,

@@ -3,6 +3,11 @@ LICENSE
 README
 Todo
 Changes
+eg/authorinfo.pl
+eg/bloginfo.pl
+eg/cosmos.pl
+eg/outbound.pl
+eg/search.pl
 lib/WebService/Technorati.pm
 lib/WebService/Technorati/ApiQuery.pm
 lib/WebService/Technorati/Author.pm
@@ -18,6 +23,7 @@ lib/WebService/Technorati/OutboundApiQuery.pm
 lib/WebService/Technorati/SearchApiQuery.pm
 lib/WebService/Technorati/SearchMatch.pm
 lib/WebService/Technorati/SearchTerm.pm
+pod2html.pl
 t/001_load.t
 t/002_parsecosmosxml.t
 t/003_parsesearchxml.t

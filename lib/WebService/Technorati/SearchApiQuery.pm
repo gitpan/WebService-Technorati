@@ -10,6 +10,11 @@ use base 'WebService::Technorati::ApiQuery';
 
 use constant API_URI => '/cosmos';
 
+BEGIN {
+	use vars qw ($VERSION);
+	$VERSION     = 0.02;
+}
+
 sub new {
     my ($class, %params) = @_;
     if (! exists $params{'key'}) {
@@ -71,10 +76,37 @@ sub readResults {
 
 }
 
+
+=head2 getSubjectSearchTerm
+
+ Usage     : getSubjectSearchTerm();
+ Purpose   : 
+ Returns   : a scalar WebService::Technorati::SearchTerm instance
+ Argument  : none
+ Throws    : none
+ Comments  : call this to retrieve the search invocation metadata
+See Also   : WebService::Technorati
+
+=cut
+
 sub getSubjectSearchTerm {
     my $self = shift;
     return $self->{'subject'};
 }
+
+
+=head2 getClaimedBlogs
+
+ Usage     : getClaimedBlogs();
+ Purpose   : 
+ Returns   : an array of WebService::Technorati::SearchMatch instances
+ Argument  : none
+ Throws    : none
+ Comments  : the search matches are returned with what Technorati
+             knows about them
+See Also   : WebService::Technorati
+
+=cut
 
 sub getSearchMatches {
     my $self = shift;

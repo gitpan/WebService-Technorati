@@ -7,6 +7,7 @@ WriteMakefile(
     AUTHOR       => 'Ian Kallen (ikallen@technorati.com)',
     ABSTRACT     => '',
     PREREQ_PM    => {
+                     'Exception::Class' => 1.19,
                      'XML::XPath' => 1.13,
                      'Test::Simple' => 0.44,
                     },

@@ -7,6 +7,111 @@ use fields qw(firstname lastname username thumbnailpicture);
 use WebService::Technorati::BaseTechnoratiObject;
 use base 'WebService::Technorati::BaseTechnoratiObject';
 
+
+BEGIN {
+	use vars qw ($VERSION);
+	$VERSION     = 0.02;
+}
+
+=head2 getFirstname
+
+ Usage     : getFirstname();
+ Purpose   : 
+ Returns   : a scalar string
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+=head2 setFirstname
+
+ Usage     : setFirstname(string);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar string
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 getLastname
+
+ Usage     : getLastname();
+ Purpose   : 
+ Returns   : a scalar string
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+=head2 setLastname
+
+ Usage     : setLastname(string);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar string
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 getUsername
+
+ Usage     : getUsername();
+ Purpose   : 
+ Returns   : a scalar string
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+=head2 setUsername
+
+ Usage     : setUsername(string);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar string
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 getThumbnailpicture
+
+ Usage     : getThumbnailpicture();
+ Purpose   : 
+ Returns   : a scalar string
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+=head2 setThumbnailpicture
+
+ Usage     : setThumbnailpicture(string);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar string
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
 {
     my %_attrs = (
         firstname => undef,

@@ -9,6 +9,63 @@ use WebService::Technorati::Blog;
 use WebService::Technorati::BaseTechnoratiObject;
 use base 'WebService::Technorati::BaseTechnoratiObject';
 
+
+BEGIN {
+	use vars qw ($VERSION);
+	$VERSION     = 0.02;
+}
+
+=head2 getBlog
+
+ Usage     : getBlog();
+ Purpose   : 
+ Returns   : a scalar WebService::Technorati::Blog
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 setBlog
+
+ Usage     : setBlog(blog);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar WebService::Technorati::Blog
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+=head2 getRankingstart
+
+ Usage     : getRankingstart();
+ Purpose   : 
+ Returns   : a scalar string
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 setRankingstart
+
+ Usage     : setRankingstart(string);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar string
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
 {
     my %_attrs = (
         blog => undef,

@@ -8,6 +8,119 @@ use WebService::Technorati::Blog;
 use WebService::Technorati::BaseTechnoratiObject;
 use base 'WebService::Technorati::BaseTechnoratiObject';
 
+
+BEGIN {
+	use vars qw ($VERSION);
+	$VERSION     = 0.02;
+}
+
+=head2 getBlog
+
+ Usage     : getBlog();
+ Purpose   : 
+ Returns   : a scalar WebService::Technorati::Blog
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 setBlog
+
+ Usage     : setBlog(blog);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar WebService::Technorati::Blog
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+
+=head2 getCreated
+
+ Usage     : getCreated();
+ Purpose   : 
+ Returns   : a scalar string
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 setCreated
+
+ Usage     : setCreated(string);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar string
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 getTitle
+
+ Usage     : getTitle();
+ Purpose   : 
+ Returns   : a scalar string
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 setTitle
+
+ Usage     : setTitle(string);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar string
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+
+=head2 getExcerpt
+
+ Usage     : getExcerpt();
+ Purpose   : 
+ Returns   : a scalar string
+ Argument  : none
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+=head2 setExcerpt
+
+ Usage     : setExcerpt(string);
+ Purpose   : 
+ Returns   : void
+ Argument  : a scalar string
+ Throws    : none
+ Comments  : 
+See Also   : WebService::Technorati
+
+=cut
+
+
+
 {
     my %_attrs = (
         blog => undef,

@@ -2,6 +2,45 @@ package WebService::Technorati::Exception;
 use strict;
 use utf8;
 
+
+BEGIN {
+	use vars qw ($VERSION);
+	$VERSION     = 0.02;
+}
+
+=head1 WebService::Technorati::NetworkException
+
+=cut
+
+
+=head1 WebService::Technorati::DataException
+
+=cut
+
+
+
+=head1 WebService::Technorati::InstantiationException
+
+=cut
+
+
+
+=head1 WebService::Technorati::StateValidationException
+
+=cut
+
+
+=head1 WebService::Technorati::AccessViolationException
+
+=cut
+
+
+=head1 WebService::Technorati::MethodNotImplementedException
+
+=cut
+
+
+
 use Exception::Class
         ( 'WebService::Technorati::Exception',
 

@@ -10,6 +10,11 @@ use base 'WebService::Technorati::ApiQuery';
 
 use constant API_URI => '/getinfo';
 
+BEGIN {
+	use vars qw ($VERSION);
+	$VERSION     = 0.02;
+}
+
 sub new {
 	my ($class, %params) = @_;
 	if (! exists $params{'key'}) {
@@ -71,10 +76,38 @@ sub readResults {
 
 }
 
+
+=head2 getSubjectAuthor
+
+ Usage     : getSubjectAuthor();
+ Purpose   : 
+ Returns   : a scalar WebService::Technorati::Author instance
+ Argument  : none
+ Throws    : none
+ Comments  : the member entity (author or not) is returned with what 
+             Technorati knows about it
+See Also   : WebService::Technorati
+
+=cut
+
 sub getSubjectAuthor {
     my $self = shift;
     return $self->{'subject'};
 }
+
+
+=head2 getClaimedBlogs
+
+ Usage     : getClaimedBlogs();
+ Purpose   : 
+ Returns   : an array of WebService::Technorati::Blog instances
+ Argument  : none
+ Throws    : none
+ Comments  : the claimed blogs are returned with what Technorati
+             knows about them
+See Also   : WebService::Technorati
+
+=cut
 
 sub getClaimedBlogs {
     my $self = shift;

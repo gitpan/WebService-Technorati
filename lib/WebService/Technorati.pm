@@ -11,7 +11,7 @@ use WebService::Technorati::BloginfoApiQuery;
 
 BEGIN {
 	use vars qw ($VERSION);
-	$VERSION     = 0.01;
+	$VERSION     = 0.02;
 }
 
 # $Id: Technorati.pm,v 1.1.1.1 2004/11/19 00:03:23 ikallen Exp $ 
@@ -88,10 +88,10 @@ perl(1).
 
 =head2 getCosmosApiQuery
 
- Usage     : getCosmosApiQuery('http://www.example.com')
+ Usage     : getCosmosApiQuery('http://developers.technorati.com')
  Purpose   : Instantiates a CosmosApiQuery with the given url
  Returns   : WebService::Technorati::CosmosApiQuery
- Argument  : a url
+ Argument  : a URL
  Throws    : WebService::Technorati::InstantiationException when called 
            : without an api key
  Comments  : WebService::Technorati::CosmosApiQuery is a Perl interface to the Technorati
@@ -133,7 +133,7 @@ sub getSearchApiQuery {
 
 =head2 getOutboundApiQuery
 
- Usage     : getOutboundApiQuery('http://www.example.com')
+ Usage     : getOutboundApiQuery('http://developers.technorati.com')
  Purpose   : Instantiates a OutboundApiQuery with the given url
  Returns   : WebService::Technorati::OutboundApiQuery
  Argument  : a url
@@ -179,7 +179,7 @@ sub getAuthorinfoApiQuery {
 
 =head2 getBloginfoApiQuery
 
- Usage     : getBloginfoApiQuery('http://www.example.com')
+ Usage     : getBloginfoApiQuery('http://developers.technorati.com')
  Purpose   : Instantiates a BloginfoApiQuery with the given url
  Returns   : WebService::Technorati::BloginfoApiQuery
  Argument  : a url

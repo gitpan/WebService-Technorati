@@ -71,10 +71,44 @@ sub readResults {
 
 }
 
+
+BEGIN {
+	use vars qw ($VERSION);
+	$VERSION     = 0.02;
+}
+
+=head2 getSubjectBlog
+
+ Usage     : getSubjectBlog();
+ Purpose   : 
+ Returns   : a scalar WebService::Technorati::BlogSubject instance
+ Argument  : none
+ Throws    : none
+ Comments  : the URL subject (blog or not) is returned with what 
+             Technorati knows about it
+See Also   : WebService::Technorati
+
+=cut
+
 sub getSubjectBlog {
     my $self = shift;
     return $self->{'subject'};
 }
+
+
+=head2 getOutboundLinks
+
+ Usage     : getOutboundLinks();
+ Purpose   : 
+ Returns   : an array of WebService::Technorati::BlogLink instances
+ Argument  : none
+ Throws    : none
+ Comments  : the list of outbound links are returned with what Technorati knows
+             about them
+See Also   : WebService::Technorati
+
+=cut
+
 
 sub getOutboundLinks {
     my $self = shift;
